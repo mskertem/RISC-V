@@ -63,7 +63,30 @@ sudo rm -rf <prefix-dir-specified-at-configure-time>
 make 2>&1 | tee build.log
 ~~~
 
-#### After make toolchain directory should be added to path. It can be done by 
+#### After make, toolchain directory should be added to path. It can be done by opening .bashrc folder then pasting 
+~~~
+sudo nano .bashrc
+~~~
+
+#### Paste the below directory to the end of .bashrc folder. Then press "CTRL+O", "enter", "CTRL+X"
+~~~
+~/Downloads/riscv-gnu-toolchain/installed-tools/bin/
+~~~
+
+#### Install Verilator and GTKWave
+~~~
+sudo apt-get install verilator
+sudo apt-get install gtkwave
+~~~
+
+~~~
+git clone https://github.com/yavuz650/RISC-V.git
+cd RISC-V/test/bubble_sort
+riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s –march=rv32i – mabi=ilp32 –T ../linksc.ld –nostartfiles –ffunction-sections -fdata- sections -Wl,--gc sections -o bubble_sort.elf
+~~~
+
+
+
 
 
 # Troubleshooting, Bugs & Suggestions
