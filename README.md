@@ -17,7 +17,9 @@ you can use the core.
 |:---:
 |![Simplified Pipeline Diagram](/simplified_pipeline.png) |
 
-## Set-up Hornet
+# Set-up Hornet
+
+## Install Toolchain
 #### Install main prerequisites: 
 ~~~
 sudo apt install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev
@@ -73,16 +75,19 @@ sudo nano .bashrc
 ~/Downloads/riscv-gnu-toolchain/installed-tools/bin/
 ~~~
 
-#### Install Verilator and GTKWave
+## Install Verilator and GTKWave
 ~~~
 sudo apt-get install verilator
 sudo apt-get install gtkwave
 ~~~
 
+## Compile a Code
+#### Clone Hornet Git and Compile bubble_sort.c file
 ~~~
 git clone https://github.com/yavuz650/RISC-V.git
 cd RISC-V/test/bubble_sort
-riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s –march=rv32i – mabi=ilp32 –T ../linksc.ld –nostartfiles –ffunction-sections -fdata- sections -Wl,--gc sections -o bubble_sort.elf
+riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s -march=rv32i -mabi=ilp32 -T ../linksc.ld -nostartfiles -ffunction-sections -fdata- sections -Wl,--gc sections -o bubble_sort.elf
+riscv64-unknown-elf-objcopy -O binary -j .init -j .text -j .rodata bubble_sort.elf bubble_sort.bin
 ~~~
 
 
