@@ -86,7 +86,13 @@ sudo apt-get install gtkwave
 ~~~
 git clone https://github.com/yavuz650/RISC-V.git
 cd RISC-V/test/bubble_sort
+~~~
+
+~~~
 riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s -march=rv32i -mabi=ilp32 -T ../linksc.ld -nostartfiles -ffunction-sections -fdata- sections -Wl,--gc sections -o bubble_sort.elf
+~~~
+
+~~~
 riscv64-unknown-elf-objcopy -O binary -j .init -j .text -j .rodata bubble_sort.elf bubble_sort.bin
 ~~~
 
