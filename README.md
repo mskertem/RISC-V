@@ -18,6 +18,7 @@ you can use the core.
 |![Simplified Pipeline Diagram](/simplified_pipeline.png) |
 
 # Set-up Hornet
+This set-up contains build of toolchain, Hornet Core and simulation of bubble_sort.c file which can be found in /test/bubble_sort directory. Also the waveforms can be observed through GTKWave by this way, simulation and debugging of .c source files can be done.
 
 ## Install Toolchain
 #### Install main prerequisites: 
@@ -82,23 +83,49 @@ sudo apt-get install gtkwave
 ~~~
 
 ## Compile a Code
-#### Clone Hornet Git and Compile bubble_sort.c file
+#### Clone Hornet Git
 ~~~
 git clone https://github.com/yavuz650/RISC-V.git
 cd RISC-V/test/bubble_sort
 ~~~
 
+#### Generate .elf file
 ~~~
 riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s -march=rv32i -mabi=ilp32 -T ../linksc.ld -nostartfiles -ffunction-sections -fdata- sections -Wl,--gc sections -o bubble_sort.elf
 ~~~
 
+#### Generate .bin file
 ~~~
 riscv64-unknown-elf-objcopy -O binary -j .init -j .text -j .rodata bubble_sort.elf bubble_sort.bin
 ~~~
 
+#### Compile a Code
+~~~
+cd..
+g++ rom_generator.c –o rom_generator 
+cd bubble_sort
+~~~
 
+#### Generate the .data file
+~~~
+../rom_generator bubble_sort.bin
+~~~
 
+## Simulating with Verilator
+#### To use the wrapper file, change the file name according to C source file name (In this case bubble_sort.c)
+~~~
+./bubble_sort_script
+~~~
 
+#### Change Directory to Launch GTKWave
+~~~
+cd obj_dir
+~~~
+
+#### Launch GTKWave
+~~~
+gtkwave simx.vcd
+~~~
 
 # Troubleshooting, Bugs & Suggestions
 Feel free to create an issue on GitHub or send an e-mail.
