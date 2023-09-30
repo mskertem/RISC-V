@@ -87,7 +87,7 @@ sudo apt-get install gtkwave
 #### Clone Hornet Git
 ~~~
 cd Downloads
-git clone https://github.com/yavuz650/RISC-V.git
+git clone https://github.com/mskertem/RISC-V
 ~~~
 
 #### Generate .elf file
