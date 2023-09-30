@@ -103,7 +103,7 @@ riscv64-unknown-elf-objcopy -O binary -j .init -j .text -j .rodata bubble_sort.e
 #### Compile a Code
 ~~~
 cd ..
-g++ rom_generator.c –o rom_generator 
+g++ rom_generator.c -o rom_generator 
 cd bubble_sort
 ~~~
 
