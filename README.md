@@ -88,11 +88,11 @@ sudo apt-get install gtkwave
 ~~~
 cd Downloads
 git clone https://github.com/yavuz650/RISC-V.git
-cd RISC-V/test/bubble_sort
 ~~~
 
 #### Generate .elf file
 ~~~
+cd RISC-V/test/bubble_sort
 riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s -march=rv32i -mabi=ilp32 -T ../linksc.ld -nostartfiles -ffunction-sections -fdata-sections -Wl,--gc-sections -o bubble_sort.elf
 ~~~
 
