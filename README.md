@@ -86,6 +86,7 @@ sudo apt-get install gtkwave
 ## Compile a Code
 #### Clone Hornet Git
 ~~~
+cd Downloads
 git clone https://github.com/yavuz650/RISC-V.git
 cd RISC-V/test/bubble_sort
 ~~~
