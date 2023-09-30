@@ -66,14 +66,15 @@ sudo rm -rf <prefix-dir-specified-at-configure-time>
 make 2>&1 | tee build.log
 ~~~
 
-#### After make, toolchain directory should be added to path. It can be done by opening .bashrc folder then pasting 
+#### After make, toolchain directory should be added to path. It can be done by opening .bashrc folder in home directory then pasting 
 ~~~
+cd ~/
 sudo nano .bashrc
 ~~~
 
 #### Paste the below directory to the end of .bashrc folder. Then press "CTRL+O", "enter", "CTRL+X"
 ~~~
-~/Downloads/riscv-gnu-toolchain/installed-tools/bin/
+export PATH=$PATH:~/Desktop/riscv-gnu-toolchain/installed-tools/bin
 ~~~
 
 ## Install Verilator and GTKWave
@@ -91,7 +92,7 @@ cd RISC-V/test/bubble_sort
 
 #### Generate .elf file
 ~~~
-riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s -march=rv32i -mabi=ilp32 -T ../linksc.ld -nostartfiles -ffunction-sections -fdata- sections -Wl,--gc sections -o bubble_sort.elf
+riscv64-unknown-elf-gcc bubble_sort.c ../crt0.s -march=rv32i -mabi=ilp32 -T ../linksc.ld -nostartfiles -ffunction-sections -fdata-sections -Wl,--gc-sections -o bubble_sort.elf
 ~~~
 
 #### Generate .bin file
